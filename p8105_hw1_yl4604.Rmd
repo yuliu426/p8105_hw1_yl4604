@@ -8,6 +8,8 @@ This is my solution to HW1
 
 ```{r}
 library(tidyverse)
+library(ggplot2)
+
 ```
 
 ## Problem 1
@@ -38,6 +40,35 @@ I can take  means of numeric and logical but not character or factor
 as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
 as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
 as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
+
+```
+
+##problem 2 
+
+```{r penguins}
+data('penguins', package = 'palmerpenguins')
+summary(penguins)
+```
+The variable names in the dataset 'penguins' are: ' `r names(penguins)` '.    
+There are `r unique(pull(penguins, species))`  species in the dataset, on `r unique(pull(penguins, island))` island.
+There are total
+The range of penguins bill length is (`r range(pull(penguins, bill_length_mm), na.rm = TRUE)` )mm, minimum length is `r min(pull(penguins, bill_length_mm), na.rm = TRUE)`mm, maximum length is `r max(pull(penguins, bill_length_mm), na.rm = TRUE)`mm, average length is `r mean(pull(penguins, bill_length_mm), na.rm = TRUE)`mm.  
+The range of bill depth is (`r range(pull(penguins, bill_depth_mm), na.rm = TRUE)`) mm, minimum depth is `r min(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm, maximum depth is `r max(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm, average depth is `r mean(pull(penguins, bill_depth_mm), na.rm = TRUE)`mm.  
+The range of flipper length is ( `r range(pull(penguins, flipper_length_mm), na.rm = TRUE)`) mm, minimum length is `r min(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm, maximum length is `r max(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm, average length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm.  
+The range of body mass is (`r range(pull(penguins, body_mass_g), na.rm = TRUE)` )g. minimum mass is `r min(pull(penguins, body_mass_g), na.rm = TRUE)`mm, maximum mas is `r max(pull(penguins, body_mass_g), na.rm = TRUE)`mm, average mass is `r mean(pull(penguins, body_mass_g), na.rm = TRUE)`mm.  
+
+The total female is `#
+
+The size of the dataset penguins is `r nrow(penguins)` * `r ncol(penguins)` .
+
+The mean filpper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`mm.
+
+```{r scatterplot}
+ggplot(penguins, 
+       aes(x = bill_length_mm, 
+           y = flipper_length_mm, 
+           colour = species) )+ geom_point()
+ggsave
 
 ```
 
